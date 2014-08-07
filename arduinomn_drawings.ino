@@ -10,11 +10,9 @@ It has been tested to work with the SainSmart LCD Keypad and Arduino UNO R2 and 
 
 #define numUsers (sizeof(names)/sizeof(char *))
 
-long randNumber;
-
 LCDKeypad lcd;
 
-char* names[] = { "NAMES HERE" };
+char* names[] = { "NAME1", "NAME2", "ETC" };
 
 void setup() {
   Serial.begin(9600);
@@ -28,9 +26,8 @@ void setup() {
 
 void pickName() {
   lcd.clear();
-  int namesSize = sizeof(names);
-  randNumber = random(numUsers-1);
-  Serial.print(numUsers);
+  int namesSize = sizeof(names) / sizeof(int);
+  long randNumber = random(namesSize);
   lcd.print(names[randNumber]);
   
 }
